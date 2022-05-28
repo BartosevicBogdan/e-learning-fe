@@ -1,9 +1,13 @@
-import React from 'react'
+import React from 'react';
 import './App.css';
+import AuthProvider from './providers/auth.contex';
+import Router from './Router';
 const App = () => {
   return (
-    <div>App</div>
-  )
-}
+    <AuthProvider>
+      <Router />
+    </AuthProvider>
+  );
+};
 
-export default App
+export default App;
