@@ -1,5 +1,4 @@
-// const BaseURL = process.env.REACT_APP_SERVER_URL;
-const BaseURL = 'http://localhost:8080';
+const BaseURL = process.env.REACT_APP_SERVER_URL;
 const RegisterLocation = '/v1/auth/register';
 const LoginLocation = '/v1/auth/login';
 const LecturesLocation = '/v1/lectures/';
