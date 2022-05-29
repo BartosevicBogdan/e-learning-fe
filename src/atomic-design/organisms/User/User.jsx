@@ -18,7 +18,7 @@ const User = ({ ID }) => {
     setFirstName(UserInfo.FirstName || 'not entered');
     setLastName(UserInfo.LastName || 'not entered');
     setDoB(new Date(UserInfo.DoB).toLocaleDateString('en-CA') || 'not entered');
-    setAvatar(UserInfo.Avatar || 'http://localhost:3000/avatar.jpg');
+    setAvatar(UserInfo.Avatar || '/avatar.jpg');
   }, [UserInfo]);
 
   const [Email, setEmail] = useState('');

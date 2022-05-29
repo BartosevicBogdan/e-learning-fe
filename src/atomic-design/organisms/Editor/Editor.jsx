@@ -13,11 +13,11 @@ const Editor = ({ onChange, initialText }) => {
     <>
       <EditorMCE
         apiKey="dpbd48ttf1zhgtcxcakye9sviiy7snjsh41pa2jihw3njghr"
-        tinymceScriptSrc={process.env.PUBLIC_URL + '/tinymce/tinymce.min.js'}
+        tinymceScriptSrc={'/tinymce/tinymce.min.js'}
         // onEditorChange={() => console.log('editor')}
         onEditorChange={() => onChangeHandler()}
         onInit={(evt, editor) => (editorRef.current = editor)}
-        initialValue={'<p>Enter your text here...</p>'}
+        initialValue={initialText || '<p>Enter your text here...</p>'}
         init={{
           height: 500,
           menubar: true,
