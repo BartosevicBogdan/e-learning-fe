@@ -19,7 +19,7 @@ const LectureHeader = ({ Title, Brief, AuthorID, ID }) => {
         </S.Title>
         <Author ID={AuthorID} />
         <S.Brief>
-          <S.BriefTitle>Brief description</S.BriefTitle>
+          <S.BriefTitle>Brief description:</S.BriefTitle>
           <S.BriefBody>{brief}</S.BriefBody>
         </S.Brief>
       </S.Header>

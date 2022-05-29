@@ -1,12 +1,5 @@
 import styled from 'styled-components';
 
-const WidthCondition = `
-  width: 100%;
-`;
-const WidthCondition2 = `
- width:50%;
-`;
-
 export const Grid = styled.div`
   width: 100%;
   display: grid;
@@ -17,9 +10,6 @@ export const Grid = styled.div`
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
   }
-  /* display: flex;
-  justify-content: space-between; */
-  /* gap: 3rem; */
 `;
 
 export const Hide = styled.div`
@@ -30,13 +20,6 @@ export const Hide = styled.div`
 `;
 
 export const Box = styled.div`
-  /* ${({ isHidden }) => {
-    return isHidden === true ? WidthCondition : WidthCondition2;
-  }}; */
-  /* ${({ isHidden }) => {
-    return isHidden && 'width: 100%;';
-  }}; */
-
   margin-block: 2rem;
   border-left: 0.25rem solid black;
   border-right: 0.25rem solid black;

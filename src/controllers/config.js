@@ -12,7 +12,11 @@ const PostRequests = {
 };
 const GetRequests = {
   Lectures: `${BaseURL}${LecturesLocation}get`,
+  myLectures: `${BaseURL}${LecturesLocation}myLectures`,
   User: `${BaseURL}${ProfileLocation}get/`,
 };
+const UpdateRequests = {
+  Profile: `${BaseURL}${ProfileLocation}update`, // dynamic link /update/:id
+};
 
-export { PostRequests, GetRequests };
+export { PostRequests, GetRequests, UpdateRequests };

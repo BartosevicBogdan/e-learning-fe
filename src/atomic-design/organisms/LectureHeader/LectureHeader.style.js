@@ -12,10 +12,11 @@ export const Container = styled.div`
 `;
 export const Header = styled.div``;
 export const Title = styled(Link)`
+  color: #000;
+  cursor: pointer;
   font-size: 1.5rem;
   font-weight: 700;
   margin: 0;
-  cursor: pointer;
   text-decoration: none;
   &:visited {
     color: #000;
@@ -24,9 +25,17 @@ export const Title = styled(Link)`
     color: blue;
   }
 `;
-export const Brief = styled.div``;
-export const BriefTitle = styled.h3``;
-export const BriefBody = styled.p``;
+export const Brief = styled.div`
+  padding-top: 1rem;
+`;
+export const BriefTitle = styled.p`
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 700;
+`;
+export const BriefBody = styled.p`
+  margin: 0;
+`;
 
 export const ToolBar = styled.div`
   margin: 1rem;

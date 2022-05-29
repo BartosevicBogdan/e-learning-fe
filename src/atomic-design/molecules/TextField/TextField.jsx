@@ -4,12 +4,21 @@ import * as S from './TextField.style';
 import { useState, useEffect } from 'react';
 import Validation from './../../../validation/validation';
 
-const TextField = ({ label, type, placeholder, value, onChange, bindTo, relatedValue }) => {
+const TextField = ({
+  label,
+  type,
+  placeholder,
+  value,
+  onChange,
+  bindTo,
+  relatedValue,
+  notCheck,
+}) => {
   const [error, setError] = useState('');
 
   useEffect(() => {}, []);
   useEffect(() => {
-    check();
+    !notCheck && check();
   }, [value]);
 
   const check = () => {

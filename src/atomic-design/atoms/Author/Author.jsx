@@ -46,7 +46,7 @@ const Author = ({ ID }) => {
     <>{`Author: ${AuthorName.FirstName} ${AuthorName.LastName}`}</>
   );
 
-  return <S.StyledLink to={`profile/${ID}`}>{isUser}</S.StyledLink>;
+  return <S.StyledLink to={`/profile/${ID}`}>{isUser}</S.StyledLink>;
 };
 
 export default Author;
