@@ -12,7 +12,7 @@ const Logo = () => {
         history('/');
       }}
     >
-      <S.Icon src="./education-10.svg" />
+      <S.Icon src="./education-10.svg" alt="page logo" />
       <S.Text>Learning-Platform</S.Text>
     </S.Container>
   );

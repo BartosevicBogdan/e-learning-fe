@@ -19,7 +19,7 @@ export const Brief = styled.p``;
 
 export const ToolBar = styled.div`
   margin: 1rem;
-  padding: 0.5rem;
+  padding: 0.1rem 1.5rem;
   border-radius: 1rem;
   border: 0.075rem solid #aaa;
 `;
@@ -31,4 +31,13 @@ export const Button = styled.button`
   color: white;
   border-radius: 0.5rem;
   border: none;
+`;
+export const Row = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
+export const Icon = styled.div`
+  font-size: 2rem;
+  cursor: pointer;
 `;

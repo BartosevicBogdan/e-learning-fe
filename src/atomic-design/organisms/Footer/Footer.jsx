@@ -6,6 +6,7 @@ import * as S from './Footer.style';
 const Footer = ({ children }) => {
   return (
     <S.Footer>
+      <S.Space />
       <S.Box>{children}</S.Box>
     </S.Footer>
   );

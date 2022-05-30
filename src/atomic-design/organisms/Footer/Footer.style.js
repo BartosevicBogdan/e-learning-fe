@@ -1,14 +1,19 @@
 import styled from 'styled-components';
 
 export const Footer = styled.div`
-  background: black;
-  color: #fff;
   margin-top: auto;
 `;
-export const Box = styled.div`
-  height: 6rem;
+export const Space = styled.div`
   width: 100%;
-  display: flex;
-  justify-content: center;
+  height: 3rem;
+`;
+
+export const Box = styled.div`
   align-items: center;
+  background: black;
+  color: #fff;
+  display: flex;
+  height: 4rem;
+  justify-content: center;
+  width: 100%;
 `;

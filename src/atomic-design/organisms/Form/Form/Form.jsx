@@ -18,6 +18,8 @@ const Form = ({ variant }) => {
   const password2 = useInput('');
 
   const [isDisabled, setIsDisabled] = useState(true);
+  const [submitHandlerState, setSubmitHandlerState] = useState(false);
+  const [submitHandlerText, setSubmitHandlerText] = useState('');
 
   //#region Fields config
 
@@ -121,14 +123,31 @@ const Form = ({ variant }) => {
   };
 
   const registerHandler = async (dataToSend) => {
+    setSubmitHandlerState(true);
+    setSubmitHandlerText('Trying to sign up');
     const response = await registerFetch(dataToSend);
-    if (response.success === true && response.data.affectedRows === 1) history('/login');
+    if (response.success === true && response.data.affectedRows === 1) {
+      setSubmitHandlerText('User created succesfully');
+      setTimeout(() => {
+        history('/login');
+      }, 1500);
+    } else {
+      setSubmitHandlerText('Something went wrong');
+    }
   };
   const loginHandler = async (dataToSend) => {
+    setSubmitHandlerState(true);
+    setSubmitHandlerText('Trying to sign in');
     const response = await loginFetch(dataToSend);
     if (response.success === true && response.data.token) {
-      setToken(response.data.token) && authContext.setToken(response.data.token);
-      history('/');
+      setSubmitHandlerText('You loged in succesfully');
+      setToken(response.data.token);
+      authContext.setToken(response.data.token);
+      setTimeout(() => {
+        history('/');
+      }, 1500);
+    } else {
+      setSubmitHandlerText('Something went wrong');
     }
   };
 
@@ -176,6 +195,7 @@ const Form = ({ variant }) => {
   return (
     <S.Container>
       {renderTitle()}
+      {submitHandlerState && <h3>{submitHandlerText} </h3>}
       {renderFields()}
       <S.Submit disabled={isDisabled} onClick={submitHandler}>
         {buttonText()}

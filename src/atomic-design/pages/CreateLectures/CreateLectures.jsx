@@ -10,12 +10,16 @@ import { postLectures } from '../../../controllers/fetch';
 
 import { FaRegEyeSlash, FaRegEye, FaRegPaperPlane } from 'react-icons/fa';
 import Button from '../../atoms/Button/Button';
+import { useNavigate } from 'react-router-dom';
 
 const CreateLectures = (props) => {
+  const history = useNavigate();
   const Title = useInput('');
   const Brief = useInput('');
   const [Content, setContent] = useState('');
   const [isHidden, setIsHidden] = useState(false);
+  const [Notification, setNotification] = useState(false);
+  const [NotificationText, setNotificationText] = useState('');
 
   const fields = [
     {
@@ -37,9 +41,21 @@ const CreateLectures = (props) => {
   ];
 
   const lecturePush = async () => {
+    setNotificationText('Publishing lecture');
+    setNotification(true);
     const dataToPass = { Title: Title.value, Brief: Brief.value, Content };
     const response = await postLectures(dataToPass);
-    console.log('response', response);
+    if (response.success) {
+      setNotificationText(response.data.msg);
+      setTimeout(() => {
+        setNotification(false);
+        history('/profile');
+      });
+    } else {
+      setNotificationText(response.error);
+    }
+
+    // console.log('lecturePush, response', response);
   };
 
   useEffect(() => {
@@ -76,7 +92,7 @@ const CreateLectures = (props) => {
               Create Lecture
             </Button>
           </S.ButtonsBar>
-
+          {Notification && <h3>{NotificationText}</h3>}
           <S.Grid isHidden={isHidden}>
             <S.Hide isHidden={isHidden}>
               <S.Box isHidden={isHidden}>

@@ -6,7 +6,7 @@ import { FiAtSign, FiUser, FiCalendar } from 'react-icons/fi';
 import { FaTags } from 'react-icons/fa';
 import TextField from '../../molecules/TextField/TextField';
 import Button from '../../atoms/Button/Button';
-const UserEdit = ({ ID }) => {
+const UserEdit = ({ ID, setNotificationState, setNotificationText }) => {
   const [UserInfo, setUserInfo] = useState([]);
   console.log('ID', ID);
   useEffect(() => {
@@ -27,8 +27,18 @@ const UserEdit = ({ ID }) => {
   const setDate = (e) => {
     console.log(e.target.value);
   };
-  const updateProfile = () => {
-    update(ID, { FirstName, LastName, DoB, Avatar });
+  const updateProfile = async () => {
+    setNotificationText('Sending updates');
+    setNotificationState(true);
+
+    const response = await update(ID, { FirstName, LastName, DoB, Avatar });
+    // console.log('updateProfile, response.success', response);
+    if (response.success) {
+      setNotificationText('Account updated');
+      setTimeout(() => {
+        setNotificationState(false);
+      }, 3000);
+    }
   };
 
   return (

@@ -10,31 +10,46 @@ import * as S from './Profile.style';
 import { useEffect, useState } from 'react';
 import { myLectures } from '../../../controllers/fetch';
 import LectureHeader from '../../organisms/LectureHeader/LectureHeader';
+import jwt_decode from 'jwt-decode';
+import { getToken } from '../../../utils/helper';
 
 const Profile = (props) => {
   let { userID: ID } = useParams();
+  const { ID: jwtID } = jwt_decode(getToken());
+
+  console.log('Profile jwtID', jwtID);
+
   const [EditMode, setEditMode] = useState(false);
   // console.log('userID', ID);
   const [Lectures, setLectures] = useState([]);
+
+  const [NotificationState, setNotificationState] = useState(false);
+  const [NotificationText, setNotificationText] = useState('');
+
   useEffect(() => {
     myLectures(setLectures, ID);
     // console.log('Lectures', Lectures);
   }, []);
+
+  const editButton = () => <Button onClick={() => setEditMode((prev) => !prev)}>Edit</Button>;
   return (
     <div>
       <JustifyContent>
         <Container>
           <S.Row>
             <h1>Profile</h1>
-            <S.Fix>
-              <Button onClick={() => setEditMode((prev) => !prev)}>Edit</Button>
-            </S.Fix>
+            <S.Fix>{(ID === undefined || jwtID === Number(ID)) && editButton()}</S.Fix>
           </S.Row>
+          {NotificationState && <h3>{NotificationText}</h3>}
           {!EditMode && <User ID={ID} />}
-          {EditMode && <UserEdit ID={ID} />}
-
+          {EditMode && (
+            <UserEdit
+              ID={ID}
+              setNotificationState={setNotificationState}
+              setNotificationText={setNotificationText}
+            />
+          )}
           <h1>Lectures:</h1>
-
           {Lectures ? (
             <S.Box>
               {Lectures.map((el) => (

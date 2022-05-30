@@ -1,5 +1,5 @@
 import { getToken } from '../utils/helper';
-import { GetRequests, PostRequests, UpdateRequests } from './config';
+import { GetRequests, PostRequests, UpdateRequests, DeleteRequests } from './config';
 
 const registerFetch = async (dataToPass) => {
   const data = await fetch(PostRequests.Register, {
@@ -10,9 +10,10 @@ const registerFetch = async (dataToPass) => {
     body: JSON.stringify(dataToPass),
   });
   const dataInJs = await data.json();
-  console.log(dataInJs);
+  // console.log(dataInJs);
   return dataInJs;
 };
+
 const loginFetch = async (dataToPass) => {
   const data = await fetch(PostRequests.Login, {
     method: 'POST',
@@ -22,7 +23,7 @@ const loginFetch = async (dataToPass) => {
     body: JSON.stringify(dataToPass),
   });
   const dataInJs = await data.json();
-  console.log(dataInJs);
+  // console.log(dataInJs);
   return dataInJs;
 };
 
@@ -36,11 +37,12 @@ const fetchLectures = async (setState) => {
     },
   });
   const dataInJs = await data.json();
-  console.log(dataInJs);
+  // console.log(dataInJs);
   setState(dataInJs.data);
 };
+
 const fetchLectureById = async (setState, ID) => {
-  console.log('GetRequests.Lectures', GetRequests.Lectures);
+  // console.log('GetRequests.Lectures', GetRequests.Lectures);
   const data = await fetch(`${GetRequests.Lectures}/${ID}`, {
     method: 'GET',
     headers: {
@@ -53,8 +55,9 @@ const fetchLectureById = async (setState, ID) => {
   // console.log('dataInJs.data', dataInJs.data);
   setState(dataInJs.data[0]);
 };
+
 const fetchUser = async (setState, dynamicID) => {
-  console.log('GetRequests.Lectures', GetRequests.User);
+  // console.log('GetRequests.Lectures', GetRequests.User);
   const data = await fetch(`${GetRequests.User}${dynamicID}`, {
     method: 'GET',
     headers: {
@@ -63,11 +66,12 @@ const fetchUser = async (setState, dynamicID) => {
     },
   });
   const dataInJs = await data.json();
-  console.log(dataInJs);
+  // console.log(dataInJs);
   setState(dataInJs.data);
 };
+
 const myLectures = async (setState, ID) => {
-  console.log('GetRequests.Lectures', GetRequests.myLectures);
+  // console.log('GetRequests.Lectures', GetRequests.myLectures);
   const data = await fetch(`${GetRequests.myLectures}/${ID}`, {
     method: 'GET',
     headers: {
@@ -76,12 +80,12 @@ const myLectures = async (setState, ID) => {
     },
   });
   const dataInJs = await data.json();
-  console.log(dataInJs);
+  // console.log(dataInJs);
   setState(dataInJs.data);
 };
 
 const postLectures = async (dataToPass) => {
-  console.log('GetRequests.Lectures', PostRequests.Lectures);
+  // console.log('GetRequests.Lectures', PostRequests.Lectures);
   const data = await fetch(PostRequests.Lectures, {
     method: 'POST',
     headers: {
@@ -91,11 +95,12 @@ const postLectures = async (dataToPass) => {
     body: JSON.stringify(dataToPass),
   });
   const dataInJs = await data.json();
-  console.log(dataInJs);
-  return dataInJs.data;
+  // console.log(dataInJs);
+  return dataInJs;
 };
+
 const updateProfile = async (ID, dataToPass) => {
-  console.log('GetRequests.Lectures', UpdateRequests.Profile);
+  // console.log('GetRequests.Lectures', UpdateRequests.Profile);
   const data = await fetch(`${UpdateRequests.Profile}/${ID}`, {
     method: 'PUT',
     headers: {
@@ -105,17 +110,68 @@ const updateProfile = async (ID, dataToPass) => {
     body: JSON.stringify(dataToPass),
   });
   const dataInJs = await data.json();
-  console.log(dataInJs);
-  return dataInJs.data;
+  // console.log(dataInJs);
+  return dataInJs;
+};
+
+const likeInvert = async (setState, dataToPass) => {
+  const data = await fetch(PostRequests.LikeInvert, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${getToken()}`,
+    },
+    body: JSON.stringify(dataToPass),
+  });
+  const dataInJs = await data.json();
+  console.log('likeInvert, dataInJs', dataInJs);
+  setState(dataInJs.data);
+  // return dataInJs;
+};
+
+const getLikes = async (setState, dataToPass) => {
+  const data = await fetch(GetRequests.Like, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${getToken()}`,
+    },
+    body: JSON.stringify(dataToPass),
+  });
+  const dataInJs = await data.json();
+  // console.log('getLikes, dataInJs.data', dataInJs.data);
+  setState(dataInJs.data);
+  // return dataInJs;
+};
+
+const deleteLecture = async (LectureID) => {
+  try {
+    const data = await fetch(`${DeleteRequests.Lectures}/${LectureID}`, {
+      method: 'delete',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${getToken()}`,
+      },
+    });
+    const dataInJs = await data.json();
+    // console.log('deleteLecture, dataInJs', dataInJs);
+    return dataInJs;
+  } catch (error) {
+    console.warn('fetch.js / deleteLecture, error ', error);
+    return error;
+  }
 };
 
 export {
   fetchLectureById,
   fetchLectures,
   fetchUser,
+  getLikes,
+  likeInvert,
   loginFetch,
   myLectures,
   postLectures,
   registerFetch,
   updateProfile,
+  deleteLecture,
 };

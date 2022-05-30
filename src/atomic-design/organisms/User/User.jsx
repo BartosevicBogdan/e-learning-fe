@@ -33,9 +33,9 @@ const User = ({ ID }) => {
         <S.Image src={Avatar} alt="user's avatar" />
       </S.ImageBox>
       <S.Box>
-        <p>
-          <FaTags /> {FirstName} {LastName}
-        </p>
+        {/* <p>
+          <FaTags /> {FirstName} {LastName} // set UserName
+        </p> */}
         <p>
           <FiUser /> {FirstName} {LastName}
         </p>
