@@ -1,14 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { fetchUser, updateProfile as update } from '../../../controllers/fetch';
 import * as S from './UserEdit.style';
-import { FiMail } from 'react-icons/fa';
-import { FiAtSign, FiUser, FiCalendar } from 'react-icons/fi';
-import { FaTags } from 'react-icons/fa';
-import TextField from '../../molecules/TextField/TextField';
 import Button from '../../atoms/Button/Button';
+
 const UserEdit = ({ ID, setNotificationState, setNotificationText }) => {
   const [UserInfo, setUserInfo] = useState([]);
-  console.log('ID', ID);
+  // console.log('ID', ID);
   useEffect(() => {
     fetchUser(setUserInfo, ID);
   }, []);
@@ -25,7 +22,7 @@ const UserEdit = ({ ID, setNotificationState, setNotificationText }) => {
   const [Avatar, setAvatar] = useState('');
 
   const setDate = (e) => {
-    console.log(e.target.value);
+    // console.log(e.target.value);
   };
   const updateProfile = async () => {
     setNotificationText('Sending updates');

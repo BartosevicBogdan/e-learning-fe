@@ -1,11 +1,8 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import * as S from './LectureHeader.style';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import Author from './../../atoms/Author/Author';
 import { GrArticle } from 'react-icons/gr';
-import { MdOutlineDescription } from 'react-icons/md';
-import { Link } from 'react-router-dom';
 
 const LectureHeader = ({ Title, Brief, AuthorID, ID }) => {
   const [title, setTitle] = useState(Title);

@@ -1,10 +1,8 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import * as S from './Lecture.style';
 import { useEffect, useState } from 'react';
 import Author from './../../atoms/Author/Author';
 import { GrArticle } from 'react-icons/gr';
-import { MdOutlineDescription } from 'react-icons/md';
 import { RiDeleteBin2Fill } from 'react-icons/ri';
 import { deleteLecture, fetchLectureById } from '../../../controllers/fetch';
 import jwt_decode from 'jwt-decode';
@@ -57,7 +55,5 @@ const Lecture = ({ ID, AuthorID }) => {
     </S.Container>
   );
 };
-
-Lecture.propTypes = {};
 
 export default Lecture;
