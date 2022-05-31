@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes, { element } from 'prop-types';
 import * as S from './LecturesCluster.style';
 import { useEffect, useState } from 'react';
 import { fetchLectures } from '../../../controllers/fetch';

@@ -1,16 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
-import JustifyContent from '../../atoms/JustifyContent/JustifyContent';
+import * as S from './CreateLectures.style';
+import { FaRegEyeSlash, FaRegEye, FaRegPaperPlane } from 'react-icons/fa';
+import { postLectures } from '../../../controllers/fetch';
+import { useNavigate } from 'react-router-dom';
+import Button from '../../atoms/Button/Button';
 import Container from '../../atoms/Container/Container';
 import Editor from '../../organisms/Editor/Editor';
-import useInput from './../../../hooks/useInput';
+import JustifyContent from '../../atoms/JustifyContent/JustifyContent';
 import TextField from '../../molecules/TextField/TextField';
-import * as S from './CreateLectures.style';
-import { postLectures } from '../../../controllers/fetch';
-
-import { FaRegEyeSlash, FaRegEye, FaRegPaperPlane } from 'react-icons/fa';
-import Button from '../../atoms/Button/Button';
-import { useNavigate } from 'react-router-dom';
+import useInput from './../../../hooks/useInput';
 
 const CreateLectures = (props) => {
   const history = useNavigate();
@@ -59,8 +57,8 @@ const CreateLectures = (props) => {
   };
 
   useEffect(() => {
-    console.log('Content.value', Content);
-    console.log('isHidden', isHidden);
+    // console.log('Content.value', Content);
+    // console.log('isHidden', isHidden);
   }, [Content, isHidden]);
 
   return (
@@ -114,7 +112,5 @@ const CreateLectures = (props) => {
     </div>
   );
 };
-
-CreateLectures.propTypes = {};
 
 export default CreateLectures;

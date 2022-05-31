@@ -39,7 +39,7 @@ const loginFetch = async (dataToPass) => {
 
 const fetchLectures = async (setState) => {
   try {
-    console.log('GetRequests.Lectures', GetRequests.Lectures);
+    // console.log('GetRequests.Lectures', GetRequests.Lectures);
     const data = await fetch(GetRequests.Lectures, {
       method: 'GET',
       headers: {
@@ -165,7 +165,7 @@ const likeInvert = async (setState, dataToPass) => {
       body: JSON.stringify(dataToPass),
     });
     const dataInJs = await data.json();
-    console.log('likeInvert, dataInJs', dataInJs);
+    // console.log('likeInvert, dataInJs', dataInJs);
     setState(dataInJs.data);
     // return dataInJs;
   } catch (error) {
@@ -204,7 +204,7 @@ const deleteLecture = async (LectureID) => {
       },
     });
     const dataInJs = await data.json();
-    console.log('deleteLecture, dataInJs', dataInJs);
+    // console.log('deleteLecture, dataInJs', dataInJs);
     return dataInJs;
   } catch (error) {
     console.warn('fetch.js / deleteLecture, error ', error);
