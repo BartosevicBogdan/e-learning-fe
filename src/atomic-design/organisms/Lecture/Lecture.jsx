@@ -30,7 +30,7 @@ const Lecture = ({ ID, AuthorID }) => {
   const deleteHandler = async (ID) => {
     const response = await deleteLecture(ID);
     if (response.success === true) {
-      history('profile');
+      history('/profile');
     }
   };
   return (

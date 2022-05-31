@@ -1,10 +1,8 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import * as S from './Like.style';
-import { useState } from 'react';
 import jwt_decode from 'jwt-decode';
 import { getToken } from '../../../utils/helper';
 import { getLikes, likeInvert } from '../../../controllers/fetch';
-import { useEffect } from 'react';
 import { FaRegThumbsUp } from 'react-icons/fa';
 
 const Like = ({ LectureID }) => {
@@ -14,21 +12,10 @@ const Like = ({ LectureID }) => {
   const { ID: UserID } = jwt_decode(getToken());
   const dataToPass = { LectureID: Number(LectureID), UserID };
 
-  const [isLiked, setIsLiked] = useState(false);
-  const [Count, setCount] = useState(0);
-
   useEffect(() => {
     getLikes(setLikes, dataToPass);
-    console.log('Like LikeLike', Likes);
-  }, []);
-
-  //   useEffect(() => {
-  //     console.log('useEffect Likes', Likes);
-  //     console.log('useEffect Likes.data', Likes.data);
-  //     let { Clicked, Count } = Likes;
-  //     setIsLiked(Clicked);
-  //     setCount(Count);
-  //   }, [Likes]);
+    // console.log('Like LikeLike', Likes);
+  });
 
   return (
     <S.Box>
