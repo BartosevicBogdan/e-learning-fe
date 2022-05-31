@@ -24,6 +24,4 @@ const LectureHeader = ({ Title, Brief, AuthorID, ID }) => {
   );
 };
 
-LectureHeader.propTypes = {};
-
 export default LectureHeader;

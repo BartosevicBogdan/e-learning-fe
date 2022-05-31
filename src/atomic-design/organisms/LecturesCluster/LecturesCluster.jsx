@@ -3,7 +3,7 @@ import * as S from './LecturesCluster.style';
 import { useEffect, useState } from 'react';
 import { fetchLectures } from '../../../controllers/fetch';
 import LectureHeader from './../LectureHeader/LectureHeader';
-import { PostRequests } from '../../../controllers/config';
+
 const LecturesCluster = () => {
   const [array, setArray] = useState([]);
 
@@ -19,7 +19,5 @@ const LecturesCluster = () => {
     </S.Container>
   );
 };
-
-LecturesCluster.propTypes = {};
 
 export default LecturesCluster;

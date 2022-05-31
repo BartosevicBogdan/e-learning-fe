@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import * as S from './Button.style';
 
 const Button = ({ children, icon, onClick, isHidden }) => {
@@ -9,7 +8,5 @@ const Button = ({ children, icon, onClick, isHidden }) => {
     </S.Button>
   );
 };
-
-Button.propTypes = {};
 
 export default Button;

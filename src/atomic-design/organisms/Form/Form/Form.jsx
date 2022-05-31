@@ -1,14 +1,13 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import * as S from './Form.style';
 import TextField from './../../../molecules/TextField/TextField';
 import useInput from './../../../../hooks/useInput';
-import { useState } from 'react';
-import { useEffect } from 'react';
 import { loginFetch, registerFetch } from '../../../../controllers/fetch';
 import { useNavigate } from 'react-router-dom';
 import { setToken } from '../../../../utils/helper';
 import { AuthContext } from '../../../../providers/auth.contex';
+
 const Form = ({ variant }) => {
   const authContext = useContext(AuthContext);
   const history = useNavigate();

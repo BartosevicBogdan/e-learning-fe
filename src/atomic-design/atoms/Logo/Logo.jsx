@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import * as S from './Logo.style';
 import { useNavigate } from 'react-router-dom';
 
@@ -8,7 +7,6 @@ const Logo = () => {
   return (
     <S.Container
       onClick={() => {
-        console.log('ttt');
         history('/');
       }}
     >
@@ -17,7 +15,5 @@ const Logo = () => {
     </S.Container>
   );
 };
-
-Logo.propTypes = {};
 
 export default Logo;

@@ -12,10 +12,12 @@ import { useNavigate } from 'react-router-dom';
 
 const Lecture = ({ ID, AuthorID }) => {
   const [Info, setInfo] = useState([]);
+
   const history = useNavigate();
   useEffect(() => {
     fetchLectureById(setInfo, ID);
   }, []);
+
   useEffect(() => {
     setTitle(Info.Title);
     setContent(Info.Content);
